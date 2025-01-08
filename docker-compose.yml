@@ -1,35 +1,20 @@
-
-services:
-  drachtio:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    image: drachtio/drachtio-server:latest
-    container_name: drachtio-server
-    networks:
-      - drachtio-net
-    ports:
-      - "5060:5060/udp"
-      - "5060:5060/tcp"
-      - "9022:9022"
-    volumes:
-      - ./config/drachtio.conf.xml:/etc/drachtio.conf.xml # Monta o arquivo individualmente
-    command: ["/etc/drachtio/drachtio.conf.xml"]
-    
-
-  app:
-    build:
-      context: ./app
-    container_name: drachtio-app
-    networks:
-      - drachtio-net
-    ports:
-      - "3001:3000"
-    depends_on:
-      - drachtio
-    environment:
-      - NODE_ENV=development
+version: '3.0'
 
 networks:
-  drachtio-net:
+  voxout-forward:
     driver: bridge
+    ipam:
+      config:
+        - subnet: 172.29.0.0/16
+
+services:
+
+  drachtio:
+    image: drachtio/drachtio-server:latest
+    command: drachtio --contact "sip:*;transport=udp" --external-ip 0.0.0.0 --loglevel info --sofia-loglevel 3 --mtu 4096
+    ports:
+      - "9022:9022/tcp"
+      - "5060:5060/udp"
+    networks:
+      voxout-forward:
+        ipv4_address: 172.29.0.2
