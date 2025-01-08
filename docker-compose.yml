@@ -10,9 +10,8 @@ services:
       - "5060:5060/udp"
       - "5060:5060/tcp"
       - "9022:9022"
-    user: root
     volumes:
-      - ./config:/etc/drachtio
+      - ./config/drachtio.conf.xml:/etc/drachtio.conf.xml # Monta o arquivo individualmente
     command: ["/etc/drachtio/drachtio.conf.xml"]
     
 
