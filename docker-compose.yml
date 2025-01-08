@@ -10,10 +10,11 @@ services:
       - "5060:5060/udp"
       - "5060:5060/tcp"
       - "9022:9022"
+    user: root
     volumes:
       - ./config:/etc/drachtio
     command: ["/etc/drachtio/drachtio.conf.xml"]
-    user: "1000:1000"
+    
 
   app:
     build:
