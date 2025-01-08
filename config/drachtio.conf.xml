@@ -1,7 +1,7 @@
 <drachtio>
   <admin secret="cymru">0.0.0.0</admin>
   <request-handlers>
-    <request-handler sip-method="INVITE" http-method="GET" verify-peer="false">http://localhost:3000</request-handler>
+    <request-handler sip-method="INVITE" http-method="GET" verify-peer="false">http://localhost:3001</request-handler>
   </request-handlers>
   <sip>
     <contacts>
