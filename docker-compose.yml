@@ -2,7 +2,7 @@
 services:
   drachtio:
     build:
-      context: ./drachtio-custom
+      context: .
       dockerfile: Dockerfile
     image: drachtio/drachtio-server:latest
     container_name: drachtio-server
