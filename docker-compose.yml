@@ -12,7 +12,7 @@ services:
       - "9022:9022"
     volumes:
       - ./config:/etc/drachtio
-    command: ["-f", "/etc/drachtio/drachtio.conf.xml"]
+    command: ["/etc/drachtio/drachtio.conf.xml"]
 
   app:
     build:
