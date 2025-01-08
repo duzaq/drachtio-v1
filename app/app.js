@@ -48,7 +48,7 @@ srf.invite((req, res) => {
 // Inicia um servidor HTTP simples para lidar com as requisições do drachtio-server
 const express = require('express');
 const httpServer = express();
-const PORT = 3000;
+const PORT = 3001;
 
 httpServer.get('/', (req, res) => {
     console.log('Requisição HTTP recebida:', req.query);
