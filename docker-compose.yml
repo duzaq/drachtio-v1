@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  drachtio:
+    image: drachtio/drachtio-server:latest
+    container_name: drachtio-server
+    networks:
+      - drachtio-net
+    ports:
+      - "5060:5060/udp"
+      - "5060:5060/tcp"
+      - "9022:9022"
+    volumes:
+      - ./config:/etc/drachtio
+    command: ["-f", "/etc/drachtio/drachtio.conf.xml"]
+
+  app:
+    build:
+      context: ./app
+    container_name: drachtio-app
+    networks:
+      - drachtio-net
+    ports:
+      - "3000:3000"
+    depends_on:
+      - drachtio
+    environment:
+      - NODE_ENV=development
+
+networks:
+  drachtio-net:
+    driver: bridge
