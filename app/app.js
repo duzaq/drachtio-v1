@@ -1,7 +1,5 @@
-const drachtio = require('drachtio-server');
-const app = drachtio();
 const Srf = require('drachtio-srf');
-const srf = new Srf(app);
+const srf = new Srf();
 
 srf.connect({
     host: 'localhost', // Endereço do seu servidor drachtio (provavelmente 'drachtio' se usar docker-compose)
