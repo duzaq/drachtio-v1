@@ -13,6 +13,7 @@ services:
     volumes:
       - ./config:/etc/drachtio
     command: ["/etc/drachtio/drachtio.conf.xml"]
+    user: "1000:1000"
 
   app:
     build:
