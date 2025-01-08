@@ -2,6 +2,9 @@ version: '3.8'
 
 services:
   drachtio:
+    build:
+      context: ./drachtio-custom
+      dockerfile: Dockerfile
     image: drachtio/drachtio-server:latest
     container_name: drachtio-server
     networks:
